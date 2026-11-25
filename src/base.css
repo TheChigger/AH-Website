@@ -98,24 +98,67 @@ html body .jw-strip--style-image > .jw-strip__background-container {
 }
 
 .jw-strip__content-container p,
-.jw-strip__content-container li {
+.jw-strip__content-container p span,
+.jw-strip__content-container p strong,
+.jw-strip__content-container p em,
+.jw-strip__content-container li,
+.jw-strip__content-container li span {
   color: var(--ah-ink) !important;
   line-height: 1.65 !important;
 }
 
-/* Accessible button baseline */
-.jw-btn {
+/* Accessible button baseline — forces crisp white caption text over Webador's #737373 default */
+html body .jw-btn,
+html body a.jw-btn,
+html body button.jw-btn {
   background-color: var(--ah-accent) !important;
+  border-color: var(--ah-accent) !important;
   color: #ffffff !important;
   border-radius: 8px !important;
   min-height: 44px;
-  padding: 10px 20px !important;
+  padding: 10px 22px !important;
   font-weight: 600 !important;
   transition: background-color 150ms ease, transform 150ms ease;
 }
 
-.jw-btn:hover {
+html body .jw-btn .jw-btn-caption,
+html body .jw-btn span,
+html body .jw-btn i {
+  color: #ffffff !important;
+}
+
+html body .jw-btn:hover,
+html body a.jw-btn:hover,
+html body button.jw-btn:hover {
   background-color: var(--ah-accent-hover) !important;
+  border-color: var(--ah-accent-hover) !important;
+}
+
+/* Home page desktop framing: tighten giant spacer strips so banner & wordmark fit cleanly above the fold */
+html body #jw-element-825332002 .jw-strip__content-container {
+  padding-top: 24px !important;
+  padding-bottom: 12px !important;
+}
+
+html body #jw-element-825332002 img {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  border-radius: 10px;
+  box-shadow: var(--ah-surface-shadow);
+}
+
+html body #jw-element-825338816 .jw-strip__content-container {
+  padding-top: 12px !important;
+  padding-bottom: 36px !important;
+}
+
+html body #jw-element-825338816 .jw-spacer {
+  display: none !important;
+}
+
+html body #jw-element-825338816 img {
+  max-width: 680px !important;
+  margin: 0 auto !important;
 }
 
 @media (max-width: 768px) {

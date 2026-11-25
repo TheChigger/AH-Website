@@ -1,14 +1,14 @@
 /* ==========================================================================
    src/books.css
-   Unwell Series book cards & About Me section layout (/my-books, /about-me)
-   Every uploaded background is mapped proportionally (cover / auto) — zero stretch.
+   Unwell Series book cards, uploaded book cover swaps, About Me & Newsletter
+   Every uploaded cover and backdrop is framed proportionally — zero stretch.
    ========================================================================== */
 
 .jw-strip__content-container {
   border-radius: var(--ah-radius) !important;
 }
 
-/* Frosted reading container for Webador text & heading blocks */
+/* Baseline frosted surface for standalone text/heading blocks */
 .jw-strip__content-container .jw-element-imagetext-text,
 .jw-strip__content-container .jw-element-heading {
   background: var(--ah-surface) !important;
@@ -22,78 +22,235 @@
   margin-bottom: 14px !important;
 }
 
-/* Shared book card geometry — applied to the entire .jw-strip so both the
-   split cover image and the frosted text card share one cohesive backdrop */
-.jw-strip:has(#jw-element-824299068),
-.jw-strip:has(#jw-element-824299073),
-.jw-strip:has(#jw-element-824915886),
-.jw-strip:has(#jw-element-824916164),
-.jw-strip:has(#jw-element-824916346) {
+/* --------------------------------------------------------------------------
+   Split-Image Desktop & Mobile Alignment Fix
+   Overrides Webador's position:absolute; top:0; left:0 on img.jw-strip__image
+   so book covers and the About Me portrait center cleanly in their column.
+   -------------------------------------------------------------------------- */
+html body .jw-strip--style-split-image {
+  align-items: center !important;
+}
+
+html body .jw-strip--style-split-image .jw-strip__background,
+html body .jw-strip--style-split-image .jw-strip__image-container {
+  height: 100% !important;
+}
+
+html body .jw-strip--style-split-image .jw-strip__image-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 100% !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+html body .jw-strip--style-split-image img.jw-strip__image {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 10px !important;
+}
+
+html body .jw-strip--style-split-image .jw-strip__content-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* --------------------------------------------------------------------------
+   Unwell Series Intro Header (#jw-element-824299063) — Single Unified Card
+   -------------------------------------------------------------------------- */
+html body #jw-element-824299063 .jw-strip__content-container {
+  padding: 28px 20px 24px 20px !important;
+}
+
+html body #jw-element-824299063 .jw-strip__content {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  padding: 32px 36px !important;
+  max-width: 960px !important;
+  margin: 0 auto !important;
+}
+
+html body #jw-element-824299063 .jw-element-imagetext-text,
+html body #jw-element-824299063 .jw-element-heading {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   All 5 Unwell Series Book Cards (/my-books)
+   Cohesive per-book backdrop + unified frosted reading card + clean uploaded covers
+   -------------------------------------------------------------------------- */
+html body .jw-strip:has(#jw-element-824299068),
+html body .jw-strip:has(#jw-element-824299073),
+html body .jw-strip:has(#jw-element-824915886),
+html body .jw-strip:has(#jw-element-824916164),
+html body .jw-strip:has(#jw-element-824916346) {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center center !important;
   border-radius: var(--ah-radius) !important;
   padding: var(--ah-card-pad-desktop) !important;
-  margin: 0 auto 24px auto !important;
-  max-width: 1120px;
+  margin: 0 auto 28px auto !important;
+  max-width: 1120px !important;
   overflow: hidden;
   box-shadow: var(--ah-surface-shadow) !important;
 }
 
-/* Book 1: When I'm Gone — Purple rose backdrop */
-.jw-strip:has(#jw-element-824299068) {
+/* Remove Webador's giant vertical spacers inside the 5 book cards */
+html body .jw-strip:has(#jw-element-824299068) .jw-spacer,
+html body .jw-strip:has(#jw-element-824299073) .jw-spacer,
+html body .jw-strip:has(#jw-element-824915886) .jw-spacer,
+html body .jw-strip:has(#jw-element-824916164) .jw-spacer,
+html body .jw-strip:has(#jw-element-824916346) .jw-spacer {
+  display: none !important;
+}
+
+/* Unify each book's title, blurb, and Amazon CTA into one crisp frosted card */
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  padding: 32px !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  box-sizing: border-box !important;
+}
+
+html body .jw-strip:has(#jw-element-824299068) .jw-element-imagetext-text,
+html body .jw-strip:has(#jw-element-824299073) .jw-element-imagetext-text,
+html body .jw-strip:has(#jw-element-824915886) .jw-element-imagetext-text,
+html body .jw-strip:has(#jw-element-824916164) .jw-element-imagetext-text,
+html body .jw-strip:has(#jw-element-824916346) .jw-element-imagetext-text,
+html body .jw-strip:has(#jw-element-824299068) .jw-element-heading,
+html body .jw-strip:has(#jw-element-824299073) .jw-element-heading,
+html body .jw-strip:has(#jw-element-824915886) .jw-element-heading,
+html body .jw-strip:has(#jw-element-824916164) .jw-element-heading,
+html body .jw-strip:has(#jw-element-824916346) .jw-element-heading {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Replace legacy Webador Canva-collage cover PNGs with clean uploaded book covers */
+html body .jw-strip:has(#jw-element-824299068) img.jw-strip__image,
+html body .jw-strip:has(#jw-element-824299073) img.jw-strip__image,
+html body .jw-strip:has(#jw-element-824915886) img.jw-strip__image,
+html body .jw-strip:has(#jw-element-824916164) img.jw-strip__image,
+html body .jw-strip:has(#jw-element-824916346) img.jw-strip__image {
+  display: none !important;
+}
+
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__image-container::after,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__image-container::after,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container::after,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
+  content: "" !important;
+  display: block !important;
+  width: min(100%, 310px) !important;
+  aspect-ratio: 2 / 3 !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  border-radius: 10px !important;
+  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.34), 0 4px 12px rgba(15, 23, 42, 0.16) !important;
+}
+
+/* Book 1: When I'm Gone — Purple rose backdrop + UW 1 clean cover */
+html body .jw-strip:has(#jw-element-824299068) {
   background-color: #b9b6fa !important;
   background-image: var(--ah-bg-when-im-gone) !important;
 }
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__image-container::after {
+  background-image: var(--ah-cover-when-im-gone) !important;
+}
 
-/* Book 2: Begin Again — Petal wreath backdrop */
-.jw-strip:has(#jw-element-824299073) {
+/* Book 2: Begin Again — Petal wreath backdrop + UW 2 clean cover */
+html body .jw-strip:has(#jw-element-824299073) {
   background-color: #f7d5fa !important;
   background-image: var(--ah-bg-begin-again) !important;
 }
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__image-container::after {
+  background-image: var(--ah-cover-begin-again) !important;
+}
 
-/* Book 3: Broken Things — Mint hydrangea backdrop */
-.jw-strip:has(#jw-element-824915886) {
+/* Book 3: Broken Things — Mint hydrangea backdrop + UW 3 clean cover */
+html body .jw-strip:has(#jw-element-824915886) {
   background-color: #dbfed2 !important;
   background-image: var(--ah-bg-broken-things) !important;
 }
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container::after {
+  background-image: var(--ah-cover-broken-things) !important;
+  aspect-ratio: 5 / 8 !important;
+}
 
-/* Book 4: Only Ever You — Butter-yellow floral backdrop */
-.jw-strip:has(#jw-element-824916164) {
+/* Book 4: Only Ever You — Butter-yellow floral backdrop + UW 4 clean cover */
+html body .jw-strip:has(#jw-element-824916164) {
   background-color: #fafdc8 !important;
   background-image: var(--ah-bg-only-ever-you) !important;
 }
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after {
+  background-image: var(--ah-cover-only-ever-you) !important;
+}
 
-/* Book 5: A Very Merry Unwell Christmas — Coral floral backdrop */
-.jw-strip:has(#jw-element-824916346) {
+/* Book 5: A Very Merry Unwell Christmas — Coral floral backdrop + UW 5 clean cover */
+html body .jw-strip:has(#jw-element-824916346) {
   background-color: #fd5f66 !important;
   background-image: var(--ah-bg-naughty-list) !important;
 }
-
-/* Keep split-image book covers framed cleanly without edge clipping */
-.jw-strip--style-split-image .jw-strip__image-container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 12px !important;
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
+  background-image: var(--ah-cover-unwell-christmas) !important;
+  aspect-ratio: 5 / 8 !important;
 }
 
-.jw-strip--style-split-image img.jw-strip__image {
-  max-width: 100% !important;
-  height: auto !important;
-  object-fit: contain !important;
-  border-radius: 8px;
-}
-
-/* About Me (#jw-element-825574326): center portrait & unify heading + bio into one card */
-html body #jw-element-825574326 .jw-strip__background,
-html body #jw-element-825574326 .jw-strip__image-container {
-  height: 100% !important;
+/* --------------------------------------------------------------------------
+   About Me (#jw-element-825574326): Centered container, portrait & unified bio card
+   -------------------------------------------------------------------------- */
+html body #jw-element-825574326 {
+  max-width: 1040px !important;
+  margin: 32px auto !important;
+  padding: 24px !important;
 }
 
 html body #jw-element-825574326 img.jw-strip__image {
-  max-width: 280px !important;
+  max-width: 340px !important;
+  width: 100% !important;
   border-radius: var(--ah-radius);
+  filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.16));
 }
 
 html body #jw-element-825574326 .jw-strip__content {
@@ -103,10 +260,14 @@ html body #jw-element-825574326 .jw-strip__content {
   border: 1px solid var(--ah-surface-border) !important;
   border-radius: var(--ah-radius) !important;
   box-shadow: var(--ah-surface-shadow) !important;
-  padding: 28px !important;
+  padding: 32px !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  box-sizing: border-box !important;
 }
 
-html body #jw-element-825574326 .jw-element-imagetext-text {
+html body #jw-element-825574326 .jw-element-imagetext-text,
+html body #jw-element-825574326 .jw-element-heading {
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -120,19 +281,76 @@ html body #jw-element-825574326 .jw-spacer {
   display: none !important;
 }
 
+/* --------------------------------------------------------------------------
+   Newsletter (#jw-element-825007784): Unified right-column frosted card
+   -------------------------------------------------------------------------- */
+html body #jw-element-825007784 .jw-spacer {
+  display: none !important;
+}
+
+html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  padding: 32px !important;
+  align-self: center !important;
+}
+
+html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-element-imagetext-text,
+html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-element-heading {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
 /* Mobile overrides: reclaim horizontal space on 360px-430px phones */
 @media (max-width: 768px) {
-  .jw-strip:has(#jw-element-824299068),
-  .jw-strip:has(#jw-element-824299073),
-  .jw-strip:has(#jw-element-824915886),
-  .jw-strip:has(#jw-element-824916164),
-  .jw-strip:has(#jw-element-824916346) {
+  html body .jw-strip:has(#jw-element-824299068),
+  html body .jw-strip:has(#jw-element-824299073),
+  html body .jw-strip:has(#jw-element-824915886),
+  html body .jw-strip:has(#jw-element-824916164),
+  html body .jw-strip:has(#jw-element-824916346) {
     padding: var(--ah-card-pad-mobile) !important;
     margin: 0 10px 18px 10px !important;
   }
 
-  html body #jw-element-825574326 .jw-strip__content {
-    padding: var(--ah-card-pad-mobile) !important;
+  html body .jw-strip--style-split-image .jw-strip__content-container {
+    padding: 16px 0 0 0 !important;
+  }
+
+  html body .jw-strip:has(#jw-element-824299068) .jw-strip__image-container::after,
+  html body .jw-strip:has(#jw-element-824299073) .jw-strip__image-container::after,
+  html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container::after,
+  html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after,
+  html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
+    width: min(76%, 240px) !important;
+  }
+
+  html body .jw-strip:has(#jw-element-824299068) .jw-strip__content,
+  html body .jw-strip:has(#jw-element-824299073) .jw-strip__content,
+  html body .jw-strip:has(#jw-element-824915886) .jw-strip__content,
+  html body .jw-strip:has(#jw-element-824916164) .jw-strip__content,
+  html body .jw-strip:has(#jw-element-824916346) .jw-strip__content,
+  html body #jw-element-824299063 .jw-strip__content,
+  html body #jw-element-825574326 .jw-strip__content,
+  html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) {
+    padding: 20px var(--ah-card-pad-mobile) !important;
+  }
+
+  html body #jw-element-825574326 {
+    margin: 12px auto !important;
+    padding: 12px !important;
+  }
+
+  html body #jw-element-825574326 img.jw-strip__image {
+    max-width: 240px !important;
   }
 
   .jw-strip__content-container .jw-element-imagetext-text,
@@ -140,7 +358,14 @@ html body #jw-element-825574326 .jw-spacer {
     padding: var(--ah-card-pad-mobile) !important;
   }
 
-  html body #jw-element-825574326 .jw-element-imagetext-text {
+  html body .jw-strip:has(#jw-element-824299068) .jw-element-imagetext-text,
+  html body .jw-strip:has(#jw-element-824299073) .jw-element-imagetext-text,
+  html body .jw-strip:has(#jw-element-824915886) .jw-element-imagetext-text,
+  html body .jw-strip:has(#jw-element-824916164) .jw-element-imagetext-text,
+  html body .jw-strip:has(#jw-element-824916346) .jw-element-imagetext-text,
+  html body #jw-element-824299063 .jw-element-imagetext-text,
+  html body #jw-element-825574326 .jw-element-imagetext-text,
+  html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-element-imagetext-text {
     padding: 0 !important;
   }
 
