@@ -1,0 +1,57 @@
+/* ==========================================================================
+   src/header-mobile.css
+   Mobile navigation header, cart toggle, drawer contrast, and touch targets
+   ========================================================================== */
+
+.jw-mobile-header {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border-bottom: 1px solid var(--ah-surface-border) !important;
+}
+
+.jw-mobile-menu__button.jw-mobile-toggle,
+.jw-mobile-menu__button.jw-mobile-header-cart {
+  background: var(--ah-surface-solid) !important;
+  color: var(--ah-ink) !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+
+.jw-mobile-menu__button.jw-mobile-toggle .jw-icon-burger,
+.jw-mobile-menu__button.jw-mobile-header-cart .website-rendering-icon-basket {
+  color: var(--ah-ink) !important;
+}
+
+/* Keep the slide-out mobile drawer opaque and easy to tap */
+.jw-mobile-menu .jw-menu,
+.jw-mobile-menu__list {
+  background-color: var(--ah-surface-solid) !important;
+}
+
+.jw-mobile-menu .jw-menu-link {
+  color: var(--ah-ink) !important;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.jw-mobile-menu .jw-menu-is-active > .jw-menu-link {
+  color: var(--ah-heading) !important;
+  font-weight: 700;
+}
+
+/* Optional CSS-styled release banner (replaces tiny baked-in text PNG on mobile) */
+.ah-release-banner {
+  background: var(--ah-accent);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  line-height: 1.4;
+}

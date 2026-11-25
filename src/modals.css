@@ -1,0 +1,20 @@
+/* ==========================================================================
+   src/modals.css
+   Solid opaque surfaces for Webador shopping cart, popups, and newsletter forms
+   ========================================================================== */
+
+body div.jw-overlay__content,
+body div.jw-overlay__box,
+body div.jw-modal__content,
+body div.jw-popup__content,
+body div.jw-dialog__content,
+body div.jw-lightbox__content,
+body [role="dialog"],
+body [aria-modal="true"] {
+  background-color: var(--ah-surface-solid) !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  color: var(--ah-ink) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25) !important;
+}

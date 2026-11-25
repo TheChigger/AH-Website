@@ -1,0 +1,63 @@
+/* ==========================================================================
+   src/shop.css
+   Fixes unreadable text on /my-shop and /product/* pages by giving every
+   Webador product card and detail view a clean, high-contrast reading surface.
+   ========================================================================== */
+
+.jw-element-product,
+.jw-element-product-gallery .product,
+.product-page,
+.product-page__content,
+.jw-cart-page {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.jw-element-product .product__name,
+.jw-element-product .product__name a,
+.product-page__title {
+  color: var(--ah-heading) !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+.jw-element-product .product__price,
+.product-page__price {
+  color: var(--ah-ink) !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.jw-element-product .product__description,
+.jw-element-product p,
+.product-page__description {
+  color: var(--ah-ink) !important;
+  line-height: 1.65 !important;
+}
+
+.jw-element-product img,
+.product-page__image img {
+  border-radius: 8px !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
+}
+
+@media (max-width: 768px) {
+  .jw-element-product,
+  .jw-element-product-gallery .product,
+  .product-page {
+    padding: var(--ah-card-pad-mobile) !important;
+  }
+
+  .jw-element-product .jw-btn,
+  .product-page .jw-btn {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}

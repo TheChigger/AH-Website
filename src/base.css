@@ -1,0 +1,104 @@
+/* ==========================================================================
+   src/base.css
+   Global backdrop (width-fit, zero distortion), Webador reset, and typography
+   ========================================================================== */
+
+/* Global website background: Copy of AUTHOR WEBSITE TEMPLATE-4.png (792x1804)
+   - background-size: 100% auto fits full width with natural aspect ratio preserved.
+   - Never squeezes or stretches on mobile or desktop.
+   - Vertically crops cleanly inside the fixed viewport layer without iOS/Android stutter. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #e9e8f0;
+  background-image: var(--ah-bg-site);
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+html,
+body {
+  background-color: #e9e8f0 !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+  color: var(--ah-ink);
+  overflow-x: clip;
+}
+
+/* Strip opaque Webador wrapper fills without re-applying the background image
+   to nested headers/sections (eliminating horizontal seam bands). */
+.jw-background,
+.jw-body,
+.main-content,
+.block-content,
+.jw-section,
+.jw-strip-root,
+.jw-strip,
+.jw-strip__background-container,
+.jw-strip__background {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Keep hero wordmark & content images proportional (never squished) */
+.jw-element-image img,
+.jw-strip__content-container img {
+  max-width: 100%;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* Legible headings & links across light frosted surfaces */
+.jw-element-heading h1,
+.jw-element-heading h2,
+.jw-element-heading h3,
+.jw-strip__content-container h1,
+.jw-strip__content-container h2 {
+  color: var(--ah-heading) !important;
+  line-height: 1.2 !important;
+  text-wrap: balance;
+}
+
+.jw-strip__content-container p,
+.jw-strip__content-container li {
+  color: var(--ah-ink) !important;
+  line-height: 1.65 !important;
+}
+
+/* Accessible button baseline */
+.jw-btn {
+  background-color: var(--ah-accent) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  min-height: 44px;
+  padding: 10px 20px !important;
+  font-weight: 600 !important;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.jw-btn:hover {
+  background-color: var(--ah-accent-hover) !important;
+}
+
+@media (max-width: 768px) {
+  .jw-strip__content-container p,
+  .jw-strip__content-container li {
+    font-size: var(--ah-body-size-mobile) !important;
+  }
+
+  .jw-strip__content-container h1 {
+    font-size: clamp(1.65rem, 6vw, 2.1rem) !important;
+  }
+
+  .jw-strip__content-container h2 {
+    font-size: clamp(1.35rem, 5vw, 1.7rem) !important;
+  }
+}
