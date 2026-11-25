@@ -1,6 +1,6 @@
 /*!
  * Autumn Hendrix Webador Theme — Compiled Bundle
- * Source repo: https://thechigger.github.io/ah-website
+ * Source repo: https://thechigger.github.io/AH-Website
  * Version: 1.0
  * Loaded via a single <link rel="stylesheet"> in Webador Head HTML.
  */
@@ -19,7 +19,7 @@
   --ah-accent-hover: #3F3374;
 
   /* Reading Surfaces */
-  --ah-surface: rgba(255, 255, 255, 0.92);
+  --ah-surface: rgba(255, 255, 255, 0.74);
   --ah-surface-solid: #ffffff;
   --ah-surface-border: rgba(30, 41, 59, 0.12);
   --ah-surface-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -28,20 +28,20 @@
   /* Responsive Spacing & Type Scale */
   --ah-radius: 10px;
   --ah-card-pad-desktop: 28px;
-  --ah-card-pad-mobile: 16px;
+  --ah-card-pad-mobile: 12px;
   --ah-body-size-mobile: 16px;
 
   /* Global & Book Section Brand Assets (hosted in this GitHub Pages repo) */
   /* Copy of AUTHOR WEBSITE TEMPLATE-4.png (792x1804 portrait texture) */
-  --ah-bg-site: url("https://thechigger.github.io/ah-website/assets/backgrounds/site-background.png");
+  --ah-bg-site: url("https://thechigger.github.io/AH-Website/assets/backgrounds/site-background.png");
   /* Copy of AUTHOR WEBSITE TEMPLATE-3.png (optional torn pastel rainbow edge) */
-  --ah-accent-rainbow: url("https://thechigger.github.io/ah-website/assets/backgrounds/rainbow-torn-edge.png");
+  --ah-accent-rainbow: url("https://thechigger.github.io/AH-Website/assets/backgrounds/rainbow-torn-edge.png");
   /* Per-book section backdrops (mapped to #jw-element-* book cards) */
-  --ah-bg-when-im-gone: url("https://thechigger.github.io/ah-website/assets/backgrounds/when-im-gone-background.jpg");
-  --ah-bg-begin-again: url("https://thechigger.github.io/ah-website/assets/backgrounds/begin-again-background.png");
-  --ah-bg-broken-things: url("https://thechigger.github.io/ah-website/assets/backgrounds/broken-things-background.png");
-  --ah-bg-only-ever-you: url("https://thechigger.github.io/ah-website/assets/backgrounds/only-ever-you-background.png");
-  --ah-bg-naughty-list: url("https://thechigger.github.io/ah-website/assets/backgrounds/naughty-list-background.png");
+  --ah-bg-when-im-gone: url("https://thechigger.github.io/AH-Website/assets/backgrounds/when-im-gone-background.jpg");
+  --ah-bg-begin-again: url("https://thechigger.github.io/AH-Website/assets/backgrounds/begin-again-background.png");
+  --ah-bg-broken-things: url("https://thechigger.github.io/AH-Website/assets/backgrounds/broken-things-background.png");
+  --ah-bg-only-ever-you: url("https://thechigger.github.io/AH-Website/assets/backgrounds/only-ever-you-background.png");
+  --ah-bg-naughty-list: url("https://thechigger.github.io/AH-Website/assets/backgrounds/naughty-list-background.png");
 }
 
 /* ==========================================================================

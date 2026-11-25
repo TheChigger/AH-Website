@@ -10,7 +10,7 @@ Clean, version-controlled CSS override layer and branding asset host for **https
 ## Repository Structure
 
 ```text
-ah-website/
+AH-Website/
 ├── .github/workflows/deploy.yml   # Auto-builds dist/theme.css & deploys GitHub Pages
 ├── assets/
 │   ├── backgrounds/               # Site background + 5 book section backdrops
@@ -30,16 +30,16 @@ ah-website/
 
 ## Step-by-Step Setup in Webador
 
-1. Push this repository to GitHub at `https://github.com/thechigger/ah-website`.
+1. Push this repository to GitHub at `https://github.com/thechigger/AH-Website`.
 2. In your GitHub repo, go to **Settings → Pages → Source** and choose **GitHub Actions**.
-3. Wait ~45 seconds for the workflow to finish, then open `https://thechigger.github.io/ah-website/dist/theme.css` to confirm it loads.
+3. Wait ~45 seconds for the workflow to finish, then open `https://thechigger.github.io/AH-Website/dist/theme.css` to confirm it loads.
 4. In **Webador**, go to **Settings → Advanced → HTML in `<head>` tag**:
    - **Remove** the two old inline `<style>...</style>` blocks so they don't conflict with the new theme.
    - **Paste** this single line:
 
 ```html
 <!-- Autumn Hendrix External Theme (Hosted on GitHub Pages) -->
-<link rel="stylesheet" href="https://thechigger.github.io/ah-website/dist/theme.css?v=1.0" />
+<link rel="stylesheet" href="https://thechigger.github.io/AH-Website/dist/theme.css?v=1.0" />
 ```
 
 5. Whenever you push a CSS update, bump `?v=1.0` to `?v=1.1` in Webador so mobile browsers fetch the latest styles right away.
