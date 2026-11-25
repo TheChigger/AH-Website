@@ -1,7 +1,7 @@
 /*!
  * Autumn Hendrix Webador Theme — Compiled Bundle
  * Source repo: https://thechigger.github.io/AH-Website
- * Version: 1.1
+ * Version: 1.2
  * Loaded via a single <link rel="stylesheet"> in Webador Head HTML.
  */
 
@@ -47,11 +47,13 @@
 /* ==========================================================================
    src/base.css
    Global backdrop (width-fit, zero distortion), Webador reset, and typography
+   Note: Webador injects <head> HTML BEFORE main.css & style.css, so selectors
+   use high specificity + !important to reliably win the cascade.
    ========================================================================== */
 
 /* Global website background: Copy of AUTHOR WEBSITE TEMPLATE-4.png (792x1804)
-   - html carries the fallback tint while body stays transparent with isolation: isolate
-     so body::before (z-index: -1) paints cleanly ABOVE html and BEHIND all Webador content.
+   - Uses z-index: 0 on body::before and z-index: 1 on .jw-body so Safari never hides
+     the fixed backdrop behind html's background fill.
    - background-size: 100% auto fits full width with natural aspect ratio preserved (zero stretch). */
 html {
   background-color: #e9e8f0 !important;
@@ -61,38 +63,42 @@ html {
 
 body {
   position: relative !important;
-  isolation: isolate !important;
   background-color: transparent !important;
   background-image: none !important;
   background-attachment: scroll !important;
-  color: var(--ah-ink);
+  color: var(--ah-ink) !important;
   overflow-x: clip;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-color: transparent;
-  background-image: var(--ah-bg-site);
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
-  pointer-events: none;
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  background-color: transparent !important;
+  background-image: var(--ah-bg-site) !important;
+  background-size: 100% auto !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
   transform: translateZ(0);
 }
 
+html body .jw-body {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
 /* Strip opaque Webador wrapper fills so the unified global backdrop shows everywhere */
-.jw-background,
-.jw-body,
-.main-content,
-.block-content,
-.jw-section,
-.jw-strip-root,
-.jw-strip,
-.jw-strip__background-container,
-.jw-strip__background {
+html body .jw-background,
+html body .jw-body,
+html body .main-content,
+html body .block-content,
+html body .jw-section,
+html body .jw-strip-root,
+html body .jw-strip,
+html body .jw-strip__background-container,
+html body .jw-strip__background {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
@@ -102,7 +108,7 @@ body::before {
 
 /* Hide legacy Webador full-strip background images (e.g. Home rainbow/texture strips)
    while keeping split-image covers & portraits (.jw-strip--style-split-image) intact */
-.jw-strip--style-image > .jw-strip__background-container {
+html body .jw-strip--style-image > .jw-strip__background-container {
   display: none !important;
 }
 
@@ -175,18 +181,57 @@ body::before {
 
 /* ==========================================================================
    src/header-mobile.css
-   Mobile navigation header, cart toggle, drawer contrast, and touch targets
+   Desktop & mobile frosted navigation header, footer, cart toggle, and drawer
    ========================================================================== */
 
-.jw-mobile-header {
+/* Desktop Header & Navigation */
+html body header.block-header {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border-bottom: 1px solid var(--ah-surface-border) !important;
+}
+
+html body #jw-header-title,
+html body .jw-menu-horizontal .jw-menu-link {
+  color: var(--ah-ink) !important;
+}
+
+html body.jw-menu-is-desktop .jw-menu > .jw-menu-is-active > .jw-menu-link,
+html body .jw-menu-horizontal .jw-menu-is-active > .jw-menu-link {
+  background-color: rgba(91, 75, 158, 0.1) !important;
+  color: var(--ah-heading) !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+}
+
+html body .jw-menu-horizontal .jw-menu-item > .jw-menu-link:hover {
+  background-color: rgba(91, 75, 158, 0.06) !important;
+  color: var(--ah-heading) !important;
+}
+
+/* Footer harmonized with the frosted background */
+html body footer.block-footer,
+html body footer.block-footer .jw-section-footer,
+html body footer.block-footer .jw-credits {
+  background: transparent !important;
+  color: var(--ah-ink-muted) !important;
+}
+
+html body footer.block-footer a {
+  color: var(--ah-heading) !important;
+}
+
+/* Mobile Header, Hamburger, Cart & Slide-out Drawer */
+html body .jw-mobile-header {
   background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(var(--ah-blur)) !important;
   -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
   border-bottom: 1px solid var(--ah-surface-border) !important;
 }
 
-.jw-mobile-menu__button.jw-mobile-toggle,
-.jw-mobile-menu__button.jw-mobile-header-cart {
+html body .jw-mobile-menu__button.jw-mobile-toggle,
+html body .jw-mobile-menu__button.jw-mobile-header-cart {
   background: var(--ah-surface-solid) !important;
   color: var(--ah-ink) !important;
   min-width: 44px !important;
@@ -196,18 +241,18 @@ body::before {
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
 }
 
-.jw-mobile-menu__button.jw-mobile-toggle .jw-icon-burger,
-.jw-mobile-menu__button.jw-mobile-header-cart .website-rendering-icon-basket {
+html body .jw-mobile-menu__button.jw-mobile-toggle .jw-icon-burger,
+html body .jw-mobile-menu__button.jw-mobile-header-cart .website-rendering-icon-basket {
   color: var(--ah-ink) !important;
 }
 
 /* Keep the slide-out mobile drawer opaque and easy to tap */
-.jw-mobile-menu .jw-menu,
-.jw-mobile-menu__list {
+html body .jw-mobile-menu .jw-menu,
+html body .jw-mobile-menu__list {
   background-color: var(--ah-surface-solid) !important;
 }
 
-.jw-mobile-menu .jw-menu-link {
+html body .jw-mobile-menu .jw-menu-link {
   color: var(--ah-ink) !important;
   min-height: 44px;
   display: flex;
@@ -215,9 +260,10 @@ body::before {
   font-weight: 500;
 }
 
-.jw-mobile-menu .jw-menu-is-active > .jw-menu-link {
+html body .jw-mobile-menu .jw-menu-is-active > .jw-menu-link {
+  background-color: rgba(91, 75, 158, 0.1) !important;
   color: var(--ah-heading) !important;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 /* Optional CSS-styled release banner (replaces tiny baked-in text PNG on mobile) */
@@ -318,10 +364,39 @@ body::before {
   border-radius: 8px;
 }
 
-/* About Me portrait container (#jw-element-825574326) */
-#jw-element-825574326 img.jw-strip__image {
-  max-width: 260px !important;
+/* About Me (#jw-element-825574326): center portrait & unify heading + bio into one card */
+html body #jw-element-825574326 .jw-strip__background,
+html body #jw-element-825574326 .jw-strip__image-container {
+  height: 100% !important;
+}
+
+html body #jw-element-825574326 img.jw-strip__image {
+  max-width: 280px !important;
   border-radius: var(--ah-radius);
+}
+
+html body #jw-element-825574326 .jw-strip__content {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  padding: 28px !important;
+}
+
+html body #jw-element-825574326 .jw-element-imagetext-text {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+html body #jw-element-825574326 .jw-spacer {
+  display: none !important;
 }
 
 /* Mobile overrides: reclaim horizontal space on 360px-430px phones */
@@ -335,9 +410,17 @@ body::before {
     margin: 0 10px 18px 10px !important;
   }
 
+  html body #jw-element-825574326 .jw-strip__content {
+    padding: var(--ah-card-pad-mobile) !important;
+  }
+
   .jw-strip__content-container .jw-element-imagetext-text,
   .jw-strip__content-container .jw-element-heading {
     padding: var(--ah-card-pad-mobile) !important;
+  }
+
+  html body #jw-element-825574326 .jw-element-imagetext-text {
+    padding: 0 !important;
   }
 
   .jw-strip__content-container img {
