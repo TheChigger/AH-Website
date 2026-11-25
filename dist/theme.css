@@ -1,7 +1,7 @@
 /*!
  * Autumn Hendrix Webador Theme — Compiled Bundle
  * Source repo: https://thechigger.github.io/AH-Website
- * Version: 1.0
+ * Version: 1.1
  * Loaded via a single <link rel="stylesheet"> in Webador Head HTML.
  */
 
@@ -19,7 +19,7 @@
   --ah-accent-hover: #3F3374;
 
   /* Reading Surfaces */
-  --ah-surface: rgba(255, 255, 255, 0.74);
+  --ah-surface: rgba(255, 255, 255, 0.92);
   --ah-surface-solid: #ffffff;
   --ah-surface-border: rgba(30, 41, 59, 0.12);
   --ah-surface-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -28,7 +28,7 @@
   /* Responsive Spacing & Type Scale */
   --ah-radius: 10px;
   --ah-card-pad-desktop: 28px;
-  --ah-card-pad-mobile: 12px;
+  --ah-card-pad-mobile: 16px;
   --ah-body-size-mobile: 16px;
 
   /* Global & Book Section Brand Assets (hosted in this GitHub Pages repo) */
@@ -50,15 +50,31 @@
    ========================================================================== */
 
 /* Global website background: Copy of AUTHOR WEBSITE TEMPLATE-4.png (792x1804)
-   - background-size: 100% auto fits full width with natural aspect ratio preserved.
-   - Never squeezes or stretches on mobile or desktop.
-   - Vertically crops cleanly inside the fixed viewport layer without iOS/Android stutter. */
+   - html carries the fallback tint while body stays transparent with isolation: isolate
+     so body::before (z-index: -1) paints cleanly ABOVE html and BEHIND all Webador content.
+   - background-size: 100% auto fits full width with natural aspect ratio preserved (zero stretch). */
+html {
+  background-color: #e9e8f0 !important;
+  background-image: none !important;
+  overflow-x: clip;
+}
+
+body {
+  position: relative !important;
+  isolation: isolate !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+  color: var(--ah-ink);
+  overflow-x: clip;
+}
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: #e9e8f0;
+  background-color: transparent;
   background-image: var(--ah-bg-site);
   background-size: 100% auto;
   background-position: center top;
@@ -67,17 +83,7 @@ body::before {
   transform: translateZ(0);
 }
 
-html,
-body {
-  background-color: #e9e8f0 !important;
-  background-image: none !important;
-  background-attachment: scroll !important;
-  color: var(--ah-ink);
-  overflow-x: clip;
-}
-
-/* Strip opaque Webador wrapper fills without re-applying the background image
-   to nested headers/sections (eliminating horizontal seam bands). */
+/* Strip opaque Webador wrapper fills so the unified global backdrop shows everywhere */
 .jw-background,
 .jw-body,
 .main-content,
@@ -94,6 +100,12 @@ body {
   border: none !important;
 }
 
+/* Hide legacy Webador full-strip background images (e.g. Home rainbow/texture strips)
+   while keeping split-image covers & portraits (.jw-strip--style-split-image) intact */
+.jw-strip--style-image > .jw-strip__background-container {
+  display: none !important;
+}
+
 /* Keep hero wordmark & content images proportional (never squished) */
 .jw-element-image img,
 .jw-strip__content-container img {
@@ -102,12 +114,24 @@ body {
   object-fit: contain;
 }
 
-/* Legible headings & links across light frosted surfaces */
+/* Legible headings across light frosted surfaces — also overrides Webador inline
+   <span style="color: #bbb2fa;"> tags created by the WYSIWYG editor */
 .jw-element-heading h1,
+.jw-element-heading h1 *,
 .jw-element-heading h2,
+.jw-element-heading h2 *,
 .jw-element-heading h3,
+.jw-element-heading h3 *,
 .jw-strip__content-container h1,
-.jw-strip__content-container h2 {
+.jw-strip__content-container h1 *,
+.jw-strip__content-container h2,
+.jw-strip__content-container h2 *,
+.jw-strip__content-container h3,
+.jw-strip__content-container h3 *,
+.jw-heading-130,
+.jw-heading-130 *,
+.jw-heading-100,
+.jw-heading-100 * {
   color: var(--ah-heading) !important;
   line-height: 1.2 !important;
   text-wrap: balance;
@@ -231,82 +255,84 @@ body {
   margin-bottom: 14px !important;
 }
 
-/* Shared book card geometry (proportional background scaling, never stretched) */
-.jw-strip__content-container:has(#jw-element-824299068),
-.jw-strip__content-container:has(#jw-element-824299073),
-.jw-strip__content-container:has(#jw-element-824915886),
-.jw-strip__content-container:has(#jw-element-824916164),
-.jw-strip__content-container:has(#jw-element-824916346) {
+/* Shared book card geometry — applied to the entire .jw-strip so both the
+   split cover image and the frosted text card share one cohesive backdrop */
+.jw-strip:has(#jw-element-824299068),
+.jw-strip:has(#jw-element-824299073),
+.jw-strip:has(#jw-element-824915886),
+.jw-strip:has(#jw-element-824916164),
+.jw-strip:has(#jw-element-824916346) {
   background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  border-radius: var(--ah-radius) !important;
   padding: var(--ah-card-pad-desktop) !important;
-  margin-bottom: 24px !important;
+  margin: 0 auto 24px auto !important;
+  max-width: 1120px;
   overflow: hidden;
+  box-shadow: var(--ah-surface-shadow) !important;
 }
 
 /* Book 1: When I'm Gone — Purple rose backdrop */
-.jw-strip__content-container:has(#jw-element-824299068) {
+.jw-strip:has(#jw-element-824299068) {
   background-color: #b9b6fa !important;
   background-image: var(--ah-bg-when-im-gone) !important;
-  background-size: cover !important;
-  background-position: center center !important;
 }
 
 /* Book 2: Begin Again — Petal wreath backdrop */
-.jw-strip__content-container:has(#jw-element-824299073) {
+.jw-strip:has(#jw-element-824299073) {
   background-color: #f7d5fa !important;
   background-image: var(--ah-bg-begin-again) !important;
-  background-size: cover !important;
-  background-position: center center !important;
 }
 
 /* Book 3: Broken Things — Mint hydrangea backdrop */
-.jw-strip__content-container:has(#jw-element-824915886) {
+.jw-strip:has(#jw-element-824915886) {
   background-color: #dbfed2 !important;
   background-image: var(--ah-bg-broken-things) !important;
-  background-size: cover !important;
-  background-position: center center !important;
 }
 
 /* Book 4: Only Ever You — Butter-yellow floral backdrop */
-.jw-strip__content-container:has(#jw-element-824916164) {
+.jw-strip:has(#jw-element-824916164) {
   background-color: #fafdc8 !important;
   background-image: var(--ah-bg-only-ever-you) !important;
-  background-size: cover !important;
-  background-position: center center !important;
 }
 
 /* Book 5: A Very Merry Unwell Christmas — Coral floral backdrop */
-.jw-strip__content-container:has(#jw-element-824916346) {
+.jw-strip:has(#jw-element-824916346) {
   background-color: #fd5f66 !important;
   background-image: var(--ah-bg-naughty-list) !important;
-  background-size: cover !important;
-  background-position: center center !important;
 }
 
-/* About Me portrait container (#jw-element-825574326) */
-#jw-element-825574326 .jw-strip__image-container {
+/* Keep split-image book covers framed cleanly without edge clipping */
+.jw-strip--style-split-image .jw-strip__image-container {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  padding: 12px !important;
 }
 
-#jw-element-825574326 img.jw-strip__image {
-  max-width: 75% !important;
+.jw-strip--style-split-image img.jw-strip__image {
+  max-width: 100% !important;
   height: auto !important;
   object-fit: contain !important;
+  border-radius: 8px;
+}
+
+/* About Me portrait container (#jw-element-825574326) */
+#jw-element-825574326 img.jw-strip__image {
+  max-width: 260px !important;
   border-radius: var(--ah-radius);
 }
 
 /* Mobile overrides: reclaim horizontal space on 360px-430px phones */
 @media (max-width: 768px) {
-  .jw-strip__content-container:has(#jw-element-824299068),
-  .jw-strip__content-container:has(#jw-element-824299073),
-  .jw-strip__content-container:has(#jw-element-824915886),
-  .jw-strip__content-container:has(#jw-element-824916164),
-  .jw-strip__content-container:has(#jw-element-824916346) {
+  .jw-strip:has(#jw-element-824299068),
+  .jw-strip:has(#jw-element-824299073),
+  .jw-strip:has(#jw-element-824915886),
+  .jw-strip:has(#jw-element-824916164),
+  .jw-strip:has(#jw-element-824916346) {
     padding: var(--ah-card-pad-mobile) !important;
-    margin-left: 8px !important;
-    margin-right: 8px !important;
+    margin: 0 10px 18px 10px !important;
   }
 
   .jw-strip__content-container .jw-element-imagetext-text,
@@ -323,12 +349,13 @@ body {
 
 /* ==========================================================================
    src/shop.css
-   Fixes unreadable text on /my-shop and /product/* pages by giving every
-   Webador product card and detail view a clean, high-contrast reading surface.
+   Fixes unreadable text on /my-shop and /product/* pages using Webador's live
+   .jw-product, .product-gallery__content, and .product-page selectors.
    ========================================================================== */
 
+.jw-product,
 .jw-element-product,
-.jw-element-product-gallery .product,
+.product-gallery__content,
 .product-page,
 .product-page__content,
 .jw-cart-page {
@@ -342,6 +369,20 @@ body {
   margin-bottom: 20px !important;
 }
 
+.product-gallery__item {
+  border: none !important;
+  background: transparent !important;
+}
+
+.product-gallery__content {
+  height: 100%;
+  margin-bottom: 0 !important;
+  padding: 14px !important;
+}
+
+.jw-product .product__heading,
+.jw-product .product__heading a,
+.product-gallery__content a,
 .jw-element-product .product__name,
 .jw-element-product .product__name a,
 .product-page__title {
@@ -351,6 +392,10 @@ body {
   line-height: 1.3 !important;
 }
 
+.jw-product .product-price,
+.jw-product .product-price__price,
+.product-gallery__content .product-price,
+.product-gallery__content .product-price__price,
 .jw-element-product .product__price,
 .product-page__price {
   color: var(--ah-ink) !important;
@@ -358,6 +403,8 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.jw-product .product__description,
+.jw-product .product__description p,
 .jw-element-product .product__description,
 .jw-element-product p,
 .product-page__description {
@@ -365,6 +412,8 @@ body {
   line-height: 1.65 !important;
 }
 
+.jw-product img,
+.product-gallery__content img,
 .jw-element-product img,
 .product-page__image img {
   border-radius: 8px !important;
@@ -372,15 +421,17 @@ body {
 }
 
 @media (max-width: 768px) {
+  .jw-product,
   .jw-element-product,
-  .jw-element-product-gallery .product,
   .product-page {
     padding: var(--ah-card-pad-mobile) !important;
   }
 
+  .jw-product .product__add-to-cart,
   .jw-element-product .jw-btn,
   .product-page .jw-btn {
     width: 100% !important;
+    justify-content: center !important;
     text-align: center !important;
   }
 }

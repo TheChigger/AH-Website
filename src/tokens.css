@@ -12,7 +12,7 @@
   --ah-accent-hover: #3F3374;
 
   /* Reading Surfaces */
-  --ah-surface: rgba(255, 255, 255, 0.74);
+  --ah-surface: rgba(255, 255, 255, 0.92);
   --ah-surface-solid: #ffffff;
   --ah-surface-border: rgba(30, 41, 59, 0.12);
   --ah-surface-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -21,7 +21,7 @@
   /* Responsive Spacing & Type Scale */
   --ah-radius: 10px;
   --ah-card-pad-desktop: 28px;
-  --ah-card-pad-mobile: 12px;
+  --ah-card-pad-mobile: 16px;
   --ah-body-size-mobile: 16px;
 
   /* Global & Book Section Brand Assets (hosted in this GitHub Pages repo) */

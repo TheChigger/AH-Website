@@ -4,15 +4,31 @@
    ========================================================================== */
 
 /* Global website background: Copy of AUTHOR WEBSITE TEMPLATE-4.png (792x1804)
-   - background-size: 100% auto fits full width with natural aspect ratio preserved.
-   - Never squeezes or stretches on mobile or desktop.
-   - Vertically crops cleanly inside the fixed viewport layer without iOS/Android stutter. */
+   - html carries the fallback tint while body stays transparent with isolation: isolate
+     so body::before (z-index: -1) paints cleanly ABOVE html and BEHIND all Webador content.
+   - background-size: 100% auto fits full width with natural aspect ratio preserved (zero stretch). */
+html {
+  background-color: #e9e8f0 !important;
+  background-image: none !important;
+  overflow-x: clip;
+}
+
+body {
+  position: relative !important;
+  isolation: isolate !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+  color: var(--ah-ink);
+  overflow-x: clip;
+}
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: #e9e8f0;
+  background-color: transparent;
   background-image: var(--ah-bg-site);
   background-size: 100% auto;
   background-position: center top;
@@ -21,17 +37,7 @@ body::before {
   transform: translateZ(0);
 }
 
-html,
-body {
-  background-color: #e9e8f0 !important;
-  background-image: none !important;
-  background-attachment: scroll !important;
-  color: var(--ah-ink);
-  overflow-x: clip;
-}
-
-/* Strip opaque Webador wrapper fills without re-applying the background image
-   to nested headers/sections (eliminating horizontal seam bands). */
+/* Strip opaque Webador wrapper fills so the unified global backdrop shows everywhere */
 .jw-background,
 .jw-body,
 .main-content,
@@ -48,6 +54,12 @@ body {
   border: none !important;
 }
 
+/* Hide legacy Webador full-strip background images (e.g. Home rainbow/texture strips)
+   while keeping split-image covers & portraits (.jw-strip--style-split-image) intact */
+.jw-strip--style-image > .jw-strip__background-container {
+  display: none !important;
+}
+
 /* Keep hero wordmark & content images proportional (never squished) */
 .jw-element-image img,
 .jw-strip__content-container img {
@@ -56,12 +68,24 @@ body {
   object-fit: contain;
 }
 
-/* Legible headings & links across light frosted surfaces */
+/* Legible headings across light frosted surfaces — also overrides Webador inline
+   <span style="color: #bbb2fa;"> tags created by the WYSIWYG editor */
 .jw-element-heading h1,
+.jw-element-heading h1 *,
 .jw-element-heading h2,
+.jw-element-heading h2 *,
 .jw-element-heading h3,
+.jw-element-heading h3 *,
 .jw-strip__content-container h1,
-.jw-strip__content-container h2 {
+.jw-strip__content-container h1 *,
+.jw-strip__content-container h2,
+.jw-strip__content-container h2 *,
+.jw-strip__content-container h3,
+.jw-strip__content-container h3 *,
+.jw-heading-130,
+.jw-heading-130 *,
+.jw-heading-100,
+.jw-heading-100 * {
   color: var(--ah-heading) !important;
   line-height: 1.2 !important;
   text-wrap: balance;

@@ -1,11 +1,12 @@
 /* ==========================================================================
    src/shop.css
-   Fixes unreadable text on /my-shop and /product/* pages by giving every
-   Webador product card and detail view a clean, high-contrast reading surface.
+   Fixes unreadable text on /my-shop and /product/* pages using Webador's live
+   .jw-product, .product-gallery__content, and .product-page selectors.
    ========================================================================== */
 
+.jw-product,
 .jw-element-product,
-.jw-element-product-gallery .product,
+.product-gallery__content,
 .product-page,
 .product-page__content,
 .jw-cart-page {
@@ -19,6 +20,20 @@
   margin-bottom: 20px !important;
 }
 
+.product-gallery__item {
+  border: none !important;
+  background: transparent !important;
+}
+
+.product-gallery__content {
+  height: 100%;
+  margin-bottom: 0 !important;
+  padding: 14px !important;
+}
+
+.jw-product .product__heading,
+.jw-product .product__heading a,
+.product-gallery__content a,
 .jw-element-product .product__name,
 .jw-element-product .product__name a,
 .product-page__title {
@@ -28,6 +43,10 @@
   line-height: 1.3 !important;
 }
 
+.jw-product .product-price,
+.jw-product .product-price__price,
+.product-gallery__content .product-price,
+.product-gallery__content .product-price__price,
 .jw-element-product .product__price,
 .product-page__price {
   color: var(--ah-ink) !important;
@@ -35,6 +54,8 @@
   font-variant-numeric: tabular-nums;
 }
 
+.jw-product .product__description,
+.jw-product .product__description p,
 .jw-element-product .product__description,
 .jw-element-product p,
 .product-page__description {
@@ -42,6 +63,8 @@
   line-height: 1.65 !important;
 }
 
+.jw-product img,
+.product-gallery__content img,
 .jw-element-product img,
 .product-page__image img {
   border-radius: 8px !important;
@@ -49,15 +72,17 @@
 }
 
 @media (max-width: 768px) {
+  .jw-product,
   .jw-element-product,
-  .jw-element-product-gallery .product,
   .product-page {
     padding: var(--ah-card-pad-mobile) !important;
   }
 
+  .jw-product .product__add-to-cart,
   .jw-element-product .jw-btn,
   .product-page .jw-btn {
     width: 100% !important;
+    justify-content: center !important;
     text-align: center !important;
   }
 }
