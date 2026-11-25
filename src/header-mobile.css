@@ -1,14 +1,47 @@
 /* ==========================================================================
    src/header-mobile.css
-   Desktop & mobile frosted navigation header, footer, cart toggle, and drawer
+   Sleek desktop & mobile frosted header, Studio slate footer, and mobile drawer
    ========================================================================== */
 
-/* Desktop Header & Navigation */
+/* Desktop Header & Navigation (compact horizontal row matching Studio preview) */
 html body header.block-header {
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(var(--ah-blur)) !important;
   -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
   border-bottom: 1px solid var(--ah-surface-border) !important;
+}
+
+@media (min-width: 769px) {
+  html body header.block-header .block-header__inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1120px !important;
+    margin: 0 auto !important;
+    padding: 12px 24px !important;
+    gap: 24px !important;
+  }
+
+  html body header.block-header .block-header__brand,
+  html body header.block-header .jw-header-logo {
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  html body header.block-header .jw-header-logo img {
+    max-height: 48px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  html body header.block-header .block-header__menu {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 html body #jw-header-title,
@@ -29,16 +62,28 @@ html body .jw-menu-horizontal .jw-menu-item > .jw-menu-link:hover {
   color: var(--ah-heading) !important;
 }
 
-/* Footer harmonized with the frosted background */
-html body footer.block-footer,
+/* Footer matching Studio dark slate anchor bar */
+html body footer.block-footer {
+  background: #3f3f46 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+html body footer.block-footer .jw-strip__content-container {
+  padding: 18px 24px !important;
+}
+
 html body footer.block-footer .jw-section-footer,
-html body footer.block-footer .jw-credits {
+html body footer.block-footer .jw-credits,
+html body footer.block-footer p,
+html body footer.block-footer span {
   background: transparent !important;
-  color: var(--ah-ink-muted) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
 }
 
 html body footer.block-footer a {
-  color: var(--ah-heading) !important;
+  color: #ffffff !important;
+  text-decoration: underline !important;
 }
 
 /* Mobile Header, Hamburger, Cart & Slide-out Drawer */
@@ -85,7 +130,27 @@ html body .jw-mobile-menu .jw-menu-is-active > .jw-menu-link {
   font-weight: 700 !important;
 }
 
-/* Optional CSS-styled release banner (replaces tiny baked-in text PNG on mobile) */
+/* Replace lime-green raster banner PNG (#jw-element-825336887) with Studio purple bar */
+html body #jw-element-825336887 .jw-element-image__image-wrapper {
+  display: none !important;
+}
+
+html body #jw-element-825336887 .jw-element-image::after {
+  content: "Broken Things is out now — Read on Kindle Unlimited & Paperback";
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--ah-accent);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 13px 20px;
+  border-radius: 10px;
+  line-height: 1.4;
+  box-shadow: var(--ah-surface-shadow);
+}
+
 .ah-release-banner {
   background: var(--ah-accent);
   color: #ffffff;

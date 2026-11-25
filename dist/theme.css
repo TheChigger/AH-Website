@@ -1,7 +1,7 @@
 /*!
  * Autumn Hendrix Webador Theme — Compiled Bundle
  * Source repo: https://thechigger.github.io/AH-Website
- * Version: 1.3
+ * Version: 1.5
  * Loaded via a single <link rel="stylesheet"> in Webador Head HTML.
  */
 
@@ -19,7 +19,7 @@
   --ah-accent-hover: #3F3374;
 
   /* Reading Surfaces */
-  --ah-surface: rgba(255, 255, 255, 0.74);
+  --ah-surface: rgba(255, 255, 255, 0.92);
   --ah-surface-solid: #ffffff;
   --ah-surface-border: rgba(30, 41, 59, 0.12);
   --ah-surface-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -28,8 +28,8 @@
   /* Responsive Spacing & Type Scale */
   --ah-radius: 12px;
   --ah-card-pad-desktop: 32px;
-  --ah-card-pad-mobile: 12px;
-  --ah-body-size-mobile: 15px;
+  --ah-card-pad-mobile: 16px;
+  --ah-body-size-mobile: 16px;
 
   /* Global & Book Section Brand Assets (hosted in this GitHub Pages repo) */
   /* Copy of AUTHOR WEBSITE TEMPLATE-4.png (792x1804 portrait texture) */
@@ -43,11 +43,11 @@
   --ah-bg-only-ever-you: url("https://thechigger.github.io/AH-Website/assets/backgrounds/only-ever-you-background.png");
   --ah-bg-naughty-list: url("https://thechigger.github.io/AH-Website/assets/backgrounds/naughty-list-background.png");
   /* Clean uploaded Unwell Series book covers (replace legacy Canva collages) */
-  --ah-cover-when-im-gone: url("https://thechigger.github.io/AH-Website/assets/books/linktree-thumbnails-for-autumn-3.png");
-  --ah-cover-begin-again: url("https://thechigger.github.io/AH-Website/assets/books/linktree-thumbnails-for-autumn-4.png");
-  --ah-cover-broken-things: url("https://thechigger.github.io/AH-Website/assets/books/linktree-thumbnails-for-autumn.png");
-  --ah-cover-only-ever-you: url("https://thechigger.github.io/AH-Website/assets/books/linktree-thumbnails-for-autumn-7.png");
-  --ah-cover-unwell-christmas: url("https://thechigger.github.io/AH-Website/assets/books/linktree-thumbnails-for-autumn-6.png");
+  --ah-cover-when-im-gone: url("https://thechigger.github.io/AH-Website/assets/books/uw-1-when-im-gone.png");
+  --ah-cover-begin-again: url("https://thechigger.github.io/AH-Website/assets/books/uw-2-begin-again.png");
+  --ah-cover-broken-things: url("https://thechigger.github.io/AH-Website/assets/books/uw-3-broken-things.png");
+  --ah-cover-only-ever-you: url("https://thechigger.github.io/AH-Website/assets/books/uw-4-only-ever-you.png");
+  --ah-cover-unwell-christmas: url("https://thechigger.github.io/AH-Website/assets/books/uw-5-naughty-and-nice-list.png");
 }
 
 /* ==========================================================================
@@ -93,6 +93,14 @@ body::before {
 html body .jw-body {
   position: relative !important;
   z-index: 1 !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+html body .jw-body .main-content,
+html body .jw-body main.block-content {
+  flex: 1 0 auto !important;
 }
 
 /* Strip opaque Webador wrapper fills so the unified global backdrop shows everywhere */
@@ -186,34 +194,173 @@ html body button.jw-btn:hover {
   border-color: var(--ah-accent-hover) !important;
 }
 
-/* Home page desktop framing: tighten giant spacer strips so banner & wordmark fit cleanly above the fold */
+/* Home page Studio parity: frosted hero card around wordmark + crisp spacing */
 html body #jw-element-825332002 .jw-strip__content-container {
-  padding-top: 24px !important;
-  padding-bottom: 12px !important;
+  padding: 20px 20px 8px 20px !important;
+}
+
+html body #jw-element-825332002 .jw-strip__content {
+  max-width: 960px !important;
+  margin: 0 auto !important;
 }
 
 html body #jw-element-825332002 img {
-  max-width: 760px !important;
+  max-width: 960px !important;
   margin: 0 auto !important;
   border-radius: 10px;
   box-shadow: var(--ah-surface-shadow);
 }
 
 html body #jw-element-825338816 .jw-strip__content-container {
-  padding-top: 12px !important;
-  padding-bottom: 36px !important;
+  padding: 12px 20px 36px 20px !important;
+}
+
+html body #jw-element-825338816 .jw-strip__content {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  padding: 36px 32px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
 }
 
 html body #jw-element-825338816 .jw-spacer {
   display: none !important;
 }
 
+html body #jw-element-825338816 .jw-element-image,
+html body #jw-element-825338816 .jw-element-image-is-left {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+html body #jw-element-825338816 .jw-element-image__image-wrapper {
+  width: 100% !important;
+  max-width: 440px !important;
+  padding-top: 0 !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+html body #jw-element-825338816 .jw-element-image__image,
 html body #jw-element-825338816 img {
-  max-width: 680px !important;
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
 }
 
+/* Optional Studio Home CTA buttons & 5-book showcase (used if pasted in Webador Embed Code) */
+.ah-home-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px auto 24px auto;
+  max-width: 960px;
+}
+
+.ah-home-cta-primary,
+.ah-home-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+.ah-home-cta-primary {
+  background: var(--ah-accent) !important;
+  color: #ffffff !important;
+}
+
+.ah-home-cta-primary:hover {
+  background: var(--ah-accent-hover) !important;
+}
+
+.ah-home-cta-secondary {
+  background: var(--ah-surface-solid) !important;
+  color: var(--ah-ink) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+}
+
+.ah-home-showcase {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto 24px auto;
+  padding: 24px;
+  background: var(--ah-surface);
+  backdrop-filter: blur(var(--ah-blur));
+  -webkit-backdrop-filter: blur(var(--ah-blur));
+  border: 1px solid var(--ah-surface-border);
+  border-radius: var(--ah-radius);
+  box-shadow: var(--ah-surface-shadow);
+  box-sizing: border-box;
+}
+
+.ah-home-book {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none !important;
+  text-align: left;
+}
+
+.ah-home-book img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+}
+
+.ah-home-book__series {
+  font-size: 0.72rem;
+  color: var(--ah-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ah-home-book__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ah-heading);
+  line-height: 1.25;
+}
+
 @media (max-width: 768px) {
+  html body #jw-element-825338816 .jw-strip__content {
+    padding: 24px 16px !important;
+  }
+
+  .ah-home-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: var(--ah-card-pad-mobile);
+    gap: 12px;
+  }
+
   .jw-strip__content-container p,
   .jw-strip__content-container li {
     font-size: var(--ah-body-size-mobile) !important;
@@ -230,15 +377,48 @@ html body #jw-element-825338816 img {
 
 /* ==========================================================================
    src/header-mobile.css
-   Desktop & mobile frosted navigation header, footer, cart toggle, and drawer
+   Sleek desktop & mobile frosted header, Studio slate footer, and mobile drawer
    ========================================================================== */
 
-/* Desktop Header & Navigation */
+/* Desktop Header & Navigation (compact horizontal row matching Studio preview) */
 html body header.block-header {
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(var(--ah-blur)) !important;
   -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
   border-bottom: 1px solid var(--ah-surface-border) !important;
+}
+
+@media (min-width: 769px) {
+  html body header.block-header .block-header__inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1120px !important;
+    margin: 0 auto !important;
+    padding: 12px 24px !important;
+    gap: 24px !important;
+  }
+
+  html body header.block-header .block-header__brand,
+  html body header.block-header .jw-header-logo {
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  html body header.block-header .jw-header-logo img {
+    max-height: 48px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  html body header.block-header .block-header__menu {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 html body #jw-header-title,
@@ -259,16 +439,28 @@ html body .jw-menu-horizontal .jw-menu-item > .jw-menu-link:hover {
   color: var(--ah-heading) !important;
 }
 
-/* Footer harmonized with the frosted background */
-html body footer.block-footer,
+/* Footer matching Studio dark slate anchor bar */
+html body footer.block-footer {
+  background: #3f3f46 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+html body footer.block-footer .jw-strip__content-container {
+  padding: 18px 24px !important;
+}
+
 html body footer.block-footer .jw-section-footer,
-html body footer.block-footer .jw-credits {
+html body footer.block-footer .jw-credits,
+html body footer.block-footer p,
+html body footer.block-footer span {
   background: transparent !important;
-  color: var(--ah-ink-muted) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
 }
 
 html body footer.block-footer a {
-  color: var(--ah-heading) !important;
+  color: #ffffff !important;
+  text-decoration: underline !important;
 }
 
 /* Mobile Header, Hamburger, Cart & Slide-out Drawer */
@@ -315,7 +507,27 @@ html body .jw-mobile-menu .jw-menu-is-active > .jw-menu-link {
   font-weight: 700 !important;
 }
 
-/* Optional CSS-styled release banner (replaces tiny baked-in text PNG on mobile) */
+/* Replace lime-green raster banner PNG (#jw-element-825336887) with Studio purple bar */
+html body #jw-element-825336887 .jw-element-image__image-wrapper {
+  display: none !important;
+}
+
+html body #jw-element-825336887 .jw-element-image::after {
+  content: "Broken Things is out now — Read on Kindle Unlimited & Paperback";
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--ah-accent);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 13px 20px;
+  border-radius: 10px;
+  line-height: 1.4;
+  box-shadow: var(--ah-surface-shadow);
+}
+
 .ah-release-banner {
   background: var(--ah-accent);
   color: #ffffff;
@@ -429,7 +641,7 @@ html body #jw-element-824299063 .jw-element-heading {
 
 /* --------------------------------------------------------------------------
    All 5 Unwell Series Book Cards (/my-books)
-   Cohesive per-book backdrop + unified frosted reading card + clean uploaded covers
+   Studio-matched horizontal layout: cover on left (240px) + wide frosted card (1fr)
    -------------------------------------------------------------------------- */
 html body .jw-strip:has(#jw-element-824299068),
 html body .jw-strip:has(#jw-element-824299073),
@@ -440,11 +652,38 @@ html body .jw-strip:has(#jw-element-824916346) {
   background-size: cover !important;
   background-position: center center !important;
   border-radius: var(--ah-radius) !important;
-  padding: var(--ah-card-pad-desktop) !important;
-  margin: 0 auto 28px auto !important;
-  max-width: 1120px !important;
+  padding: 24px !important;
+  margin: 0 auto 24px auto !important;
+  max-width: 960px !important;
   overflow: hidden;
   box-shadow: var(--ah-surface-shadow) !important;
+}
+
+@media (min-width: 769px) {
+  html body .jw-strip:has(#jw-element-824299068),
+  html body .jw-strip:has(#jw-element-824299073),
+  html body .jw-strip:has(#jw-element-824915886),
+  html body .jw-strip:has(#jw-element-824916164),
+  html body .jw-strip:has(#jw-element-824916346) {
+    grid-template-columns: [image] 240px [content] 1fr !important;
+    column-gap: 24px !important;
+  }
+
+  html body .jw-strip:has(#jw-element-824299068) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824299073) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container {
+    padding: 4px !important;
+  }
+
+  html body .jw-strip:has(#jw-element-824299068) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824299073) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824915886) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824916164) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824916346) .jw-strip__content-container {
+    padding: 0 !important;
+  }
 }
 
 /* Remove Webador's giant vertical spacers inside the 5 book cards */
@@ -468,10 +707,34 @@ html body .jw-strip:has(#jw-element-824916346) .jw-strip__content {
   border: 1px solid var(--ah-surface-border) !important;
   border-radius: var(--ah-radius) !important;
   box-shadow: var(--ah-surface-shadow) !important;
-  padding: 32px !important;
+  padding: 24px 28px !important;
   width: 100% !important;
-  max-width: 520px !important;
+  max-width: none !important;
   box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824299068) .jw-element-button,
+html body .jw-strip:has(#jw-element-824299073) .jw-element-button,
+html body .jw-strip:has(#jw-element-824915886) .jw-element-button,
+html body .jw-strip:has(#jw-element-824916164) .jw-element-button,
+html body .jw-strip:has(#jw-element-824916346) .jw-element-button {
+  text-align: left !important;
 }
 
 html body .jw-strip:has(#jw-element-824299068) .jw-element-imagetext-text,
@@ -509,13 +772,13 @@ html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after
 html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
   content: "" !important;
   display: block !important;
-  width: min(100%, 310px) !important;
+  width: min(100%, 220px) !important;
   aspect-ratio: 2 / 3 !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
   background-size: cover !important;
-  border-radius: 10px !important;
-  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.34), 0 4px 12px rgba(15, 23, 42, 0.16) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.3), 0 4px 10px rgba(15, 23, 42, 0.14) !important;
 }
 
 /* Book 1: When I'm Gone — Purple rose backdrop + UW 1 clean cover */
@@ -566,31 +829,48 @@ html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after
 }
 
 /* --------------------------------------------------------------------------
-   About Me (#jw-element-825574326): Centered container, portrait & unified bio card
+   About Me (#jw-element-825574326): Single unified frosted card wrapping
+   BOTH the illustrated portrait and the bio (exact 1:1 Studio match)
    -------------------------------------------------------------------------- */
 html body #jw-element-825574326 {
-  max-width: 1040px !important;
+  max-width: 960px !important;
   margin: 32px auto !important;
-  padding: 24px !important;
-}
-
-html body #jw-element-825574326 img.jw-strip__image {
-  max-width: 340px !important;
-  width: 100% !important;
-  border-radius: var(--ah-radius);
-  filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.16));
-}
-
-html body #jw-element-825574326 .jw-strip__content {
+  padding: 32px !important;
   background: var(--ah-surface) !important;
   backdrop-filter: blur(var(--ah-blur)) !important;
   -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
   border: 1px solid var(--ah-surface-border) !important;
   border-radius: var(--ah-radius) !important;
   box-shadow: var(--ah-surface-shadow) !important;
-  padding: 32px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 769px) {
+  html body #jw-element-825574326 {
+    grid-template-columns: [image] 240px [content] 1fr !important;
+    column-gap: 28px !important;
+  }
+
+  html body #jw-element-825574326 .jw-strip__content-container {
+    padding: 0 !important;
+  }
+}
+
+html body #jw-element-825574326 img.jw-strip__image {
+  max-width: 220px !important;
   width: 100% !important;
-  max-width: 520px !important;
+  border-radius: var(--ah-radius);
+}
+
+html body #jw-element-825574326 .jw-strip__content {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px 0 !important;
+  width: 100% !important;
+  max-width: none !important;
   box-sizing: border-box !important;
 }
 
@@ -658,7 +938,7 @@ html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-elemen
   html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container::after,
   html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after,
   html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
-    width: min(76%, 240px) !important;
+    width: min(70%, 220px) !important;
   }
 
   html body .jw-strip:has(#jw-element-824299068) .jw-strip__content,
@@ -667,18 +947,17 @@ html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-elemen
   html body .jw-strip:has(#jw-element-824916164) .jw-strip__content,
   html body .jw-strip:has(#jw-element-824916346) .jw-strip__content,
   html body #jw-element-824299063 .jw-strip__content,
-  html body #jw-element-825574326 .jw-strip__content,
   html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) {
     padding: 20px var(--ah-card-pad-mobile) !important;
   }
 
   html body #jw-element-825574326 {
-    margin: 12px auto !important;
-    padding: 12px !important;
+    margin: 16px 12px !important;
+    padding: 20px var(--ah-card-pad-mobile) !important;
   }
 
   html body #jw-element-825574326 img.jw-strip__image {
-    max-width: 240px !important;
+    max-width: 210px !important;
   }
 
   .jw-strip__content-container .jw-element-imagetext-text,

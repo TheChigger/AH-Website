@@ -41,6 +41,14 @@ body::before {
 html body .jw-body {
   position: relative !important;
   z-index: 1 !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+html body .jw-body .main-content,
+html body .jw-body main.block-content {
+  flex: 1 0 auto !important;
 }
 
 /* Strip opaque Webador wrapper fills so the unified global backdrop shows everywhere */
@@ -134,34 +142,173 @@ html body button.jw-btn:hover {
   border-color: var(--ah-accent-hover) !important;
 }
 
-/* Home page desktop framing: tighten giant spacer strips so banner & wordmark fit cleanly above the fold */
+/* Home page Studio parity: frosted hero card around wordmark + crisp spacing */
 html body #jw-element-825332002 .jw-strip__content-container {
-  padding-top: 24px !important;
-  padding-bottom: 12px !important;
+  padding: 20px 20px 8px 20px !important;
+}
+
+html body #jw-element-825332002 .jw-strip__content {
+  max-width: 960px !important;
+  margin: 0 auto !important;
 }
 
 html body #jw-element-825332002 img {
-  max-width: 760px !important;
+  max-width: 960px !important;
   margin: 0 auto !important;
   border-radius: 10px;
   box-shadow: var(--ah-surface-shadow);
 }
 
 html body #jw-element-825338816 .jw-strip__content-container {
-  padding-top: 12px !important;
-  padding-bottom: 36px !important;
+  padding: 12px 20px 36px 20px !important;
+}
+
+html body #jw-element-825338816 .jw-strip__content {
+  background: var(--ah-surface) !important;
+  backdrop-filter: blur(var(--ah-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+  border-radius: var(--ah-radius) !important;
+  box-shadow: var(--ah-surface-shadow) !important;
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  padding: 36px 32px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
 }
 
 html body #jw-element-825338816 .jw-spacer {
   display: none !important;
 }
 
+html body #jw-element-825338816 .jw-element-image,
+html body #jw-element-825338816 .jw-element-image-is-left {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+html body #jw-element-825338816 .jw-element-image__image-wrapper {
+  width: 100% !important;
+  max-width: 440px !important;
+  padding-top: 0 !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+html body #jw-element-825338816 .jw-element-image__image,
 html body #jw-element-825338816 img {
-  max-width: 680px !important;
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
 }
 
+/* Optional Studio Home CTA buttons & 5-book showcase (used if pasted in Webador Embed Code) */
+.ah-home-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px auto 24px auto;
+  max-width: 960px;
+}
+
+.ah-home-cta-primary,
+.ah-home-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+.ah-home-cta-primary {
+  background: var(--ah-accent) !important;
+  color: #ffffff !important;
+}
+
+.ah-home-cta-primary:hover {
+  background: var(--ah-accent-hover) !important;
+}
+
+.ah-home-cta-secondary {
+  background: var(--ah-surface-solid) !important;
+  color: var(--ah-ink) !important;
+  border: 1px solid var(--ah-surface-border) !important;
+}
+
+.ah-home-showcase {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto 24px auto;
+  padding: 24px;
+  background: var(--ah-surface);
+  backdrop-filter: blur(var(--ah-blur));
+  -webkit-backdrop-filter: blur(var(--ah-blur));
+  border: 1px solid var(--ah-surface-border);
+  border-radius: var(--ah-radius);
+  box-shadow: var(--ah-surface-shadow);
+  box-sizing: border-box;
+}
+
+.ah-home-book {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none !important;
+  text-align: left;
+}
+
+.ah-home-book img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+}
+
+.ah-home-book__series {
+  font-size: 0.72rem;
+  color: var(--ah-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ah-home-book__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ah-heading);
+  line-height: 1.25;
+}
+
 @media (max-width: 768px) {
+  html body #jw-element-825338816 .jw-strip__content {
+    padding: 24px 16px !important;
+  }
+
+  .ah-home-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: var(--ah-card-pad-mobile);
+    gap: 12px;
+  }
+
   .jw-strip__content-container p,
   .jw-strip__content-container li {
     font-size: var(--ah-body-size-mobile) !important;

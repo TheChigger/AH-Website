@@ -101,7 +101,7 @@ html body #jw-element-824299063 .jw-element-heading {
 
 /* --------------------------------------------------------------------------
    All 5 Unwell Series Book Cards (/my-books)
-   Cohesive per-book backdrop + unified frosted reading card + clean uploaded covers
+   Studio-matched horizontal layout: cover on left (240px) + wide frosted card (1fr)
    -------------------------------------------------------------------------- */
 html body .jw-strip:has(#jw-element-824299068),
 html body .jw-strip:has(#jw-element-824299073),
@@ -112,11 +112,38 @@ html body .jw-strip:has(#jw-element-824916346) {
   background-size: cover !important;
   background-position: center center !important;
   border-radius: var(--ah-radius) !important;
-  padding: var(--ah-card-pad-desktop) !important;
-  margin: 0 auto 28px auto !important;
-  max-width: 1120px !important;
+  padding: 24px !important;
+  margin: 0 auto 24px auto !important;
+  max-width: 960px !important;
   overflow: hidden;
   box-shadow: var(--ah-surface-shadow) !important;
+}
+
+@media (min-width: 769px) {
+  html body .jw-strip:has(#jw-element-824299068),
+  html body .jw-strip:has(#jw-element-824299073),
+  html body .jw-strip:has(#jw-element-824915886),
+  html body .jw-strip:has(#jw-element-824916164),
+  html body .jw-strip:has(#jw-element-824916346) {
+    grid-template-columns: [image] 240px [content] 1fr !important;
+    column-gap: 24px !important;
+  }
+
+  html body .jw-strip:has(#jw-element-824299068) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824299073) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container,
+  html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container {
+    padding: 4px !important;
+  }
+
+  html body .jw-strip:has(#jw-element-824299068) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824299073) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824915886) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824916164) .jw-strip__content-container,
+  html body .jw-strip:has(#jw-element-824916346) .jw-strip__content-container {
+    padding: 0 !important;
+  }
 }
 
 /* Remove Webador's giant vertical spacers inside the 5 book cards */
@@ -140,10 +167,34 @@ html body .jw-strip:has(#jw-element-824916346) .jw-strip__content {
   border: 1px solid var(--ah-surface-border) !important;
   border-radius: var(--ah-radius) !important;
   box-shadow: var(--ah-surface-shadow) !important;
-  padding: 32px !important;
+  padding: 24px 28px !important;
   width: 100% !important;
-  max-width: 520px !important;
+  max-width: none !important;
   box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content h1,
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content h2,
+html body .jw-strip:has(#jw-element-824299068) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824299073) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824915886) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824916164) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824916346) .jw-strip__content p,
+html body .jw-strip:has(#jw-element-824299068) .jw-element-button,
+html body .jw-strip:has(#jw-element-824299073) .jw-element-button,
+html body .jw-strip:has(#jw-element-824915886) .jw-element-button,
+html body .jw-strip:has(#jw-element-824916164) .jw-element-button,
+html body .jw-strip:has(#jw-element-824916346) .jw-element-button {
+  text-align: left !important;
 }
 
 html body .jw-strip:has(#jw-element-824299068) .jw-element-imagetext-text,
@@ -181,13 +232,13 @@ html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after
 html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
   content: "" !important;
   display: block !important;
-  width: min(100%, 310px) !important;
+  width: min(100%, 220px) !important;
   aspect-ratio: 2 / 3 !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
   background-size: cover !important;
-  border-radius: 10px !important;
-  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.34), 0 4px 12px rgba(15, 23, 42, 0.16) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.3), 0 4px 10px rgba(15, 23, 42, 0.14) !important;
 }
 
 /* Book 1: When I'm Gone — Purple rose backdrop + UW 1 clean cover */
@@ -238,31 +289,48 @@ html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after
 }
 
 /* --------------------------------------------------------------------------
-   About Me (#jw-element-825574326): Centered container, portrait & unified bio card
+   About Me (#jw-element-825574326): Single unified frosted card wrapping
+   BOTH the illustrated portrait and the bio (exact 1:1 Studio match)
    -------------------------------------------------------------------------- */
 html body #jw-element-825574326 {
-  max-width: 1040px !important;
+  max-width: 960px !important;
   margin: 32px auto !important;
-  padding: 24px !important;
-}
-
-html body #jw-element-825574326 img.jw-strip__image {
-  max-width: 340px !important;
-  width: 100% !important;
-  border-radius: var(--ah-radius);
-  filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.16));
-}
-
-html body #jw-element-825574326 .jw-strip__content {
+  padding: 32px !important;
   background: var(--ah-surface) !important;
   backdrop-filter: blur(var(--ah-blur)) !important;
   -webkit-backdrop-filter: blur(var(--ah-blur)) !important;
   border: 1px solid var(--ah-surface-border) !important;
   border-radius: var(--ah-radius) !important;
   box-shadow: var(--ah-surface-shadow) !important;
-  padding: 32px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 769px) {
+  html body #jw-element-825574326 {
+    grid-template-columns: [image] 240px [content] 1fr !important;
+    column-gap: 28px !important;
+  }
+
+  html body #jw-element-825574326 .jw-strip__content-container {
+    padding: 0 !important;
+  }
+}
+
+html body #jw-element-825574326 img.jw-strip__image {
+  max-width: 220px !important;
   width: 100% !important;
-  max-width: 520px !important;
+  border-radius: var(--ah-radius);
+}
+
+html body #jw-element-825574326 .jw-strip__content {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px 0 !important;
+  width: 100% !important;
+  max-width: none !important;
   box-sizing: border-box !important;
 }
 
@@ -330,7 +398,7 @@ html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-elemen
   html body .jw-strip:has(#jw-element-824915886) .jw-strip__image-container::after,
   html body .jw-strip:has(#jw-element-824916164) .jw-strip__image-container::after,
   html body .jw-strip:has(#jw-element-824916346) .jw-strip__image-container::after {
-    width: min(76%, 240px) !important;
+    width: min(70%, 220px) !important;
   }
 
   html body .jw-strip:has(#jw-element-824299068) .jw-strip__content,
@@ -339,18 +407,17 @@ html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) .jw-elemen
   html body .jw-strip:has(#jw-element-824916164) .jw-strip__content,
   html body .jw-strip:has(#jw-element-824916346) .jw-strip__content,
   html body #jw-element-824299063 .jw-strip__content,
-  html body #jw-element-825574326 .jw-strip__content,
   html body #jw-element-825007784 .jw-column:has(#jw-element-826404931) {
     padding: 20px var(--ah-card-pad-mobile) !important;
   }
 
   html body #jw-element-825574326 {
-    margin: 12px auto !important;
-    padding: 12px !important;
+    margin: 16px 12px !important;
+    padding: 20px var(--ah-card-pad-mobile) !important;
   }
 
   html body #jw-element-825574326 img.jw-strip__image {
-    max-width: 240px !important;
+    max-width: 210px !important;
   }
 
   .jw-strip__content-container .jw-element-imagetext-text,
